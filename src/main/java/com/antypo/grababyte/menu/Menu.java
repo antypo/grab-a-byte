@@ -25,9 +25,6 @@ public class Menu {
 
     public Menu(String fileName) {
         initializeMenuFromCSV(fileName);
-        // TODO remove
-        System.out.println(lunches);
-        System.out.println(drinks);
     }
 
     public List<Lunch> getLunches() {
@@ -43,7 +40,7 @@ public class Menu {
      *
      * @param fileName name of the file defining current menu.
      */
-    public void initializeMenuFromCSV(String fileName) {
+    private void initializeMenuFromCSV(String fileName) {
 
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(

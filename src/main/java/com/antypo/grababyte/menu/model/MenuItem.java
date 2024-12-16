@@ -1,5 +1,7 @@
 package com.antypo.grababyte.menu.model;
 
+import java.util.Random;
+
 /**
  * Represents a general menu item in the food ordering system.
  */
@@ -45,8 +47,23 @@ public abstract class MenuItem {
         return type.toString();
     }
 
+    private String advertisingMessageForPrice() {
+        Random random = new Random();
+
+        // 50% chance to return one of the following messages or an empty string
+        int messageIndex = random.nextInt(5);  // Randomly pick one of 4 possible messages
+
+        return switch (messageIndex) {
+            case 0, 1 -> "";
+            case 2 -> "Special offer! ";
+            case 3 -> "Limited time deal! ";
+            case 4 -> "Today just for ";
+            default -> "";  // Just in case, though it won't actually be used
+        };
+    }
+
     @Override
     public String toString() {
-        return menuNumber + ". " + name + ", today just for " + price + "zł";
+        return menuNumber + ". " + name + ", " + advertisingMessageForPrice() + price + "zł";
     }
 }

@@ -1,4 +1,20 @@
-menuNumber; type; name; price; suggestIce; suggestLemon; suggestSyrup; suggestSugar; cuisine; ingredients;
-1;Lunch;Christmas Egg;99999.99;;;;;Polish;Hubert;
-2;Lunch;Pierogi;10.0;;;;;Polish;Flour,Water,Mielone;
+menuNumber;type;name;price;suggestIce;suggestLemon;suggestSyrup;suggestSugar;cuisine;ingredients
+1;Lunch;Christmas Egg;99999.99;;;;;Polish;Hubert
+2;Lunch;Pierogi;10.0;;;;;Polish;Flour,Water,Eggs, Milk
+3;Lunch;Bigos;15.0;;;;;Polish;Cabbage,Meat,Sausage,Spices
+4;Lunch;Lasagna;18.5;;;;;Italian;Pasta,Meat,Tomato Sauce,Cheese
+5;Lunch;Spaghetti Carbonara;17.0;;;;;Italian;Pasta,Guanciale,Egg,Parmesan
+6;Lunch;Pizza Margherita;14.0;;;;;Italian;Dough,Tomato,Cheese,Basil
+7;Lunch;Taco al Pastor;12.0;;;;;Mexican;Tortilla,Pork,Pineapple,Onion,Cilantro
+8;Lunch;Enchiladas Verdes;13.5;;;;;Mexican;Tortilla,Chicken,Green Sauce,Cheese
+9;Lunch;Quesadillas;11.0;;;;;Mexican;Tortilla,Cheese,Chicken
+10;Lunch;Zurek;9.99;;;;;Polish;Sourdough,Bacon,Garlic,Egg
 1;Drink;Piwo;7.0;1;0;1;0;;;
+2;Drink;Kompot;4.0;0;1;0;0;Polish;Apple,Water,Sugar
+3;Drink;Espresso;3.5;0;0;0;0;Italian;Coffee Beans,Water
+4;Drink;Latte;5.5;0;1;0;0;Italian;Coffee,Milk,Foam
+5;Drink;Horchata;6.0;1;0;0;1;Mexican;Rice,Water,Sugar,Cinnamon
+6;Drink;Atole;6.5;0;0;0;1;Mexican;Corn Dough,Milk,Sugar,Cinnamon
+7;Drink;Limoncello;8.0;1;1;0;0;Italian;Lemon,Alcohol,Sugar
+8;Drink;Cuba Libre;10.0;1;1;1;0;Mexican;Rum,Cola,Lime
+9;Drink;Zubrowka on Ice;9.0;1;0;0;0;Polish;Vodka,Ice
