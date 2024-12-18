@@ -1,8 +1,9 @@
 package com.antypo.grababyte.menu;
 
 import com.antypo.grababyte.menu.model.Cuisine;
+import com.antypo.grababyte.menu.model.impl.Dessert;
 import com.antypo.grababyte.menu.model.impl.Drink;
-import com.antypo.grababyte.menu.model.impl.Lunch;
+import com.antypo.grababyte.menu.model.impl.MainCourse;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -13,11 +14,14 @@ import java.util.*;
  */
 public class Menu {
     // Lists are kept separately instead of a single MenuItem list for performance improvement.
-
     /**
-     * List of lunch menu items.
+     * List of main course menu items.
      */
-    private final List<Lunch> lunches = new ArrayList<>();
+    private final List<MainCourse> mainCourses = new ArrayList<>();
+    /**
+     * List of dessert menu items.
+     */
+    private final List<Dessert> desserts = new ArrayList<>();
     /**
      * List of drinks menu items.
      */
@@ -27,8 +31,12 @@ public class Menu {
         initializeMenuFromCSV(fileName);
     }
 
-    public List<Lunch> getLunches() {
-        return lunches;
+    public List<Dessert> getDesserts() {
+        return desserts;
+    }
+
+    public List<MainCourse> getMainCourses() {
+        return mainCourses;
     }
 
     public List<Drink> getDrinks() {
@@ -58,32 +66,38 @@ public class Menu {
                 String[] fields = line.split(";");
 
                 // Extract common fields for the menu item in the current row
-                int menuNumber = Integer.parseInt(getField(fields, columnIndexMap, "menuNumber"));
                 String type = getField(fields, columnIndexMap, "type");
                 String name = getField(fields, columnIndexMap, "name");
                 double price = Double.parseDouble(getField(fields, columnIndexMap, "price"));
 
                 // Add item to the menu depending on its type
-                if ("Lunch".equals(type)) {
-                    Cuisine cuisine = Cuisine.getEnum(getField(fields, columnIndexMap, "cuisine"));
-                    List<String> ingredients =
-                            Arrays.stream(getField(fields, columnIndexMap, "ingredients")
-                                            .split(","))
-                                    .map(String::trim)
-                                    .toList();
-                    lunches.add(new Lunch(menuNumber, name, price, cuisine, ingredients));
-                } else if ("Drink".equals(type)) {
-                    // Values of the suggested items are 1 or 0 for simplicity
-                    boolean suggestIce =
-                            Integer.parseInt(getField(fields, columnIndexMap, "suggestIce")) != 0;
-                    boolean suggestLemon =
-                            Integer.parseInt(getField(fields, columnIndexMap, "suggestLemon")) != 0;
-                    boolean suggestSyrup =
-                            Integer.parseInt(getField(fields, columnIndexMap, "suggestSyrup")) != 0;
-                    boolean suggestSugar =
-                            Integer.parseInt(getField(fields, columnIndexMap, "suggestSugar")) != 0;
-                    drinks.add(new Drink(menuNumber, name, price, suggestIce, suggestLemon, suggestSyrup,
-                            suggestSugar));
+                switch (type) {
+                    case "Main course" -> {
+                        Cuisine cuisine = Cuisine.getEnum(getField(fields, columnIndexMap, "cuisine"));
+                        List<String> ingredients =
+                                Arrays.stream(getField(fields, columnIndexMap, "ingredients")
+                                                .split(","))
+                                        .map(String::trim)
+                                        .toList();
+                        mainCourses.add(new MainCourse(name, price, cuisine, ingredients));
+                    }
+                    case "Dessert" -> {
+                        Cuisine cuisine = Cuisine.getEnum(getField(fields, columnIndexMap, "cuisine"));
+                        desserts.add(new Dessert(name, price, cuisine));
+                    }
+                    case "Drink" -> {
+                        // Values of the suggested items are 1 or 0 for simplicity
+                        boolean suggestIce =
+                                Integer.parseInt(getField(fields, columnIndexMap, "suggestIce")) != 0;
+                        boolean suggestLemon =
+                                Integer.parseInt(getField(fields, columnIndexMap, "suggestLemon")) != 0;
+                        boolean suggestSyrup =
+                                Integer.parseInt(getField(fields, columnIndexMap, "suggestSyrup")) != 0;
+                        boolean suggestSugar =
+                                Integer.parseInt(getField(fields, columnIndexMap, "suggestSugar")) != 0;
+                        drinks.add(new Drink(name, price, suggestIce, suggestLemon, suggestSyrup,
+                                suggestSugar));
+                    }
                 }
             }
         } catch (Exception e) {

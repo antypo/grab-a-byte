@@ -1,18 +1,21 @@
 package com.antypo.grababyte.menu.model;
 
-import com.antypo.grababyte.menu.model.impl.Lunch;
-import junit.framework.TestCase;
+import com.antypo.grababyte.menu.model.impl.MainCourse;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class MenuItemTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+public class MenuItemTest {
+
+    @Test
     public void testToString() {
-        String expected = "1. test, today just for 2.0zł";
-        MenuItem item = new Lunch(1, "test", 2.0, Cuisine.getEnum("Polish"), List.of("test1", "test2"));
+        MenuItem item = new MainCourse("test", 2.0, Cuisine.getEnum("Polish"), List.of("test1", "test2"));
 
         String actual = item.toString();
 
-        assertEquals(expected, actual);
+        assertTrue(actual.contains("test"));
+        assertTrue(actual.contains("2,00zł"));
     }
 }

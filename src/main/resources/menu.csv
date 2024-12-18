@@ -1,20 +1,29 @@
-menuNumber;type;name;price;suggestIce;suggestLemon;suggestSyrup;suggestSugar;cuisine;ingredients
-1;Lunch;Christmas Egg;99999.99;;;;;Polish;Hubert
-2;Lunch;Pierogi;10.0;;;;;Polish;Flour,Water,Eggs, Milk
-3;Lunch;Bigos;15.0;;;;;Polish;Cabbage,Meat,Sausage,Spices
-4;Lunch;Lasagna;18.5;;;;;Italian;Pasta,Meat,Tomato Sauce,Cheese
-5;Lunch;Spaghetti Carbonara;17.0;;;;;Italian;Pasta,Guanciale,Egg,Parmesan
-6;Lunch;Pizza Margherita;14.0;;;;;Italian;Dough,Tomato,Cheese,Basil
-7;Lunch;Taco al Pastor;12.0;;;;;Mexican;Tortilla,Pork,Pineapple,Onion,Cilantro
-8;Lunch;Enchiladas Verdes;13.5;;;;;Mexican;Tortilla,Chicken,Green Sauce,Cheese
-9;Lunch;Quesadillas;11.0;;;;;Mexican;Tortilla,Cheese,Chicken
-10;Lunch;Zurek;9.99;;;;;Polish;Sourdough,Bacon,Garlic,Egg
-1;Drink;Piwo;7.0;1;0;1;0;;;
-2;Drink;Kompot;4.0;0;1;0;0;Polish;Apple,Water,Sugar
-3;Drink;Espresso;3.5;0;0;0;0;Italian;Coffee Beans,Water
-4;Drink;Latte;5.5;0;1;0;0;Italian;Coffee,Milk,Foam
-5;Drink;Horchata;6.0;1;0;0;1;Mexican;Rice,Water,Sugar,Cinnamon
-6;Drink;Atole;6.5;0;0;0;1;Mexican;Corn Dough,Milk,Sugar,Cinnamon
-7;Drink;Limoncello;8.0;1;1;0;0;Italian;Lemon,Alcohol,Sugar
-8;Drink;Cuba Libre;10.0;1;1;1;0;Mexican;Rum,Cola,Lime
-9;Drink;Zubrowka on Ice;9.0;1;0;0;0;Polish;Vodka,Ice
+type;name;price;suggestIce;suggestLemon;suggestSyrup;suggestSugar;cuisine;ingredients
+Main course;Christmas Egg;99999.99;;;;;Polish;Hubert
+Main course;Pierogi;10.00;;;;;Polish;Flour,Water,Eggs, Milk
+Main course;Bigos;15.00;;;;;Polish;Cabbage,Meat,Sausage,Spices
+Main course;Lasagna;18.50;;;;;Italian;Pasta,Meat,Tomato Sauce,Cheese
+Main course;Spaghetti Carbonara;17.00;;;;;Italian;Pasta,Guanciale,Egg,Parmesan
+Main course;Pizza Margherita;14.00;;;;;Italian;Dough,Tomato,Cheese,Basil
+Main course;Taco al Pastor;12.00;;;;;Mexican;Tortilla,Pork,Pineapple,Onion,Cilantro
+Main course;Enchiladas Verdes;13.50;;;;;Mexican;Tortilla,Chicken,Green Sauce,Cheese
+Main course;Quesadillas;11.00;;;;;Mexican;Tortilla,Cheese,Chicken
+Main course;Zurek;9.99;;;;;Polish;Sourdough,Bacon,Garlic,Egg
+Dessert;Sernik;12.00;;;;;Polish;
+Dessert;Makowiec;10.50;;;;;Polish;
+Dessert;Faworki;8.00;;;;;Polish;
+Dessert;Tiramisu;15.00;;;;;Italian;
+Dessert;Cannoli;13.50;;;;;Italian;
+Dessert;Panna Cotta;14.00;;;;;Italian;
+Dessert;Churros;9.00;;;;;Mexican;
+Dessert;Flan;11.00;;;;;Mexican;
+Dessert;Tres Leches Cake;12.50;;;;;Mexican;
+Drink;Piwo;7.00;1;0;1;0;;;
+Drink;Kompot;4.00;0;1;0;0;Polish;Apple,Water,Sugar
+Drink;Espresso;3.50;0;0;0;0;Italian;Coffee Beans,Water
+Drink;Latte;5.50;0;1;0;0;Italian;Coffee,Milk,Foam
+Drink;Horchata;6.00;1;0;0;1;Mexican;Rice,Water,Sugar,Cinnamon
+Drink;Atole;6.50;0;0;0;1;Mexican;Corn Dough,Milk,Sugar,Cinnamon
+Drink;Limoncello;8.00;1;1;0;0;Italian;Lemon,Alcohol,Sugar
+Drink;Cuba Libre;10.00;1;1;1;0;Mexican;Rum,Cola,Lime
+Drink;Zubrowka on Ice;9.00;1;0;0;0;Polish;Vodka,Ice

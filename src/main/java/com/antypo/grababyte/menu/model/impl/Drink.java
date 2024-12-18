@@ -3,49 +3,45 @@ package com.antypo.grababyte.menu.model.impl;
 import com.antypo.grababyte.menu.model.MenuItem;
 import com.antypo.grababyte.menu.model.MenuItemType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Model for menu item of type {@link MenuItemType#DRINK}.
  */
 public class Drink extends MenuItem {
     /**
-     * Whether to suggest ice for the drink.
+     * Defines what extra stuff may be put in the drink.
      */
-    boolean suggestIce;
+    List<String> availableExtras;
     /**
-     * Whether to suggest lemon for the drink.
+     * Defines what extra stuff has been selected so far.
      */
-    boolean suggestLemon;
-    /**
-     * Whether to suggest syrup for the drink.
-     */
-    boolean suggestSyrup;
-    /**
-     * Whether to suggest sugar for the drink.
-     */
-    boolean suggestSugar;
+    List<String> selectedExtras;
 
-    public Drink(int menuNumber, String name, double price, boolean suggestIce, boolean suggestLemon,
+    public Drink(String name, double price, boolean suggestIce, boolean suggestLemon,
                  boolean suggestSyrup, boolean suggestSugar) {
-        super(menuNumber, name, price, MenuItemType.DRINK);
-        this.suggestIce = suggestIce;
-        this.suggestLemon = suggestLemon;
-        this.suggestSyrup = suggestSyrup;
-        this.suggestSugar = suggestSugar;
+        super(name, price, MenuItemType.DRINK);
+        this.availableExtras = new ArrayList<>();
+        addExtraIfTrue(suggestIce, "ice");
+        addExtraIfTrue(suggestLemon, "lemon");
+        addExtraIfTrue(suggestSyrup, "syrup");
+        addExtraIfTrue(suggestSugar, "sugar");
+
+        this.selectedExtras = new ArrayList<>();
     }
 
-    public boolean isSuggestIce() {
-        return suggestIce;
+    private void addExtraIfTrue(boolean condition, String extra) {
+        if (condition) {
+            availableExtras.add(extra);
+        }
     }
 
-    public boolean isSuggestLemon() {
-        return suggestLemon;
+    public void addExtra(String extra) {
+        this.selectedExtras.add(extra);
     }
 
-    public boolean isSuggestSyrup() {
-        return suggestSyrup;
-    }
-
-    public boolean isSuggestSugar() {
-        return suggestSugar;
+    public List<String> getAvailableExtras() {
+        return availableExtras;
     }
 }

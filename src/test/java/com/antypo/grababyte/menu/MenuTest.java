@@ -1,63 +1,71 @@
 package com.antypo.grababyte.menu;
 
 import com.antypo.grababyte.menu.model.Cuisine;
+import com.antypo.grababyte.menu.model.impl.Dessert;
 import com.antypo.grababyte.menu.model.impl.Drink;
-import com.antypo.grababyte.menu.model.impl.Lunch;
-import junit.framework.TestCase;
+import com.antypo.grababyte.menu.model.impl.MainCourse;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class MenuTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-    private static void assertMenuItemsMatchExpected(List<Lunch> lunches, List<Drink> drinks) {
-        // Verify lunches
-        assertEquals(2, lunches.size());
-        Lunch lunch1 = lunches.getFirst();
-        assertEquals(1, lunch1.getMenuNumber());
-        assertEquals("Christmas Egg", lunch1.getName());
-        assertEquals(99999.99, lunch1.getPrice());
-        assertEquals(Cuisine.POLISH, lunch1.getCuisine());
-        assertEquals(List.of("Hubert"), lunch1.getIngredients());
+public class MenuTest {
 
-        Lunch lunch2 = lunches.get(1);
-        assertEquals(2, lunch2.getMenuNumber());
-        assertEquals("Pierogi", lunch2.getName());
-        assertEquals(10.0, lunch2.getPrice());
-        assertEquals(Cuisine.POLISH, lunch2.getCuisine());
-        assertEquals(List.of("Flour", "Water", "Mielone"), lunch2.getIngredients());
+    private static void assertMenuItemsMatchExpected(List<MainCourse> mainCourses, List<Dessert> desserts, List<Drink> drinks) {
+        // Verify mainCourses
+        assertEquals(2, mainCourses.size());
+        MainCourse mainCourse1 = mainCourses.getFirst();
+        assertEquals("Christmas Egg", mainCourse1.getName());
+        assertEquals(99999.99, mainCourse1.getPrice());
+        assertEquals(Cuisine.POLISH, mainCourse1.getCuisine());
+        assertEquals(List.of("Hubert"), mainCourse1.getIngredients());
+
+        MainCourse mainCourse2 = mainCourses.get(1);
+        assertEquals("Pierogi", mainCourse2.getName());
+        assertEquals(10.0, mainCourse2.getPrice());
+        assertEquals(Cuisine.POLISH, mainCourse2.getCuisine());
+        assertEquals(List.of("Flour", "Water", "Mielone"), mainCourse2.getIngredients());
+
+        // Verify desserts
+        Dessert dessert = desserts.getFirst();
+        assertEquals("Sernik", dessert.getName());
+        assertEquals(12.0, dessert.getPrice());
+        assertEquals(Cuisine.POLISH, dessert.getCuisine());
 
         // Verify drinks
         assertEquals(1, drinks.size());
         Drink drink = drinks.getFirst();
-        assertEquals(1, drink.getMenuNumber());
         assertEquals("Piwo", drink.getName());
         assertEquals(7.0, drink.getPrice());
-        assertTrue(drink.isSuggestIce());
-        assertFalse(drink.isSuggestLemon());
-        assertTrue(drink.isSuggestSyrup());
-        assertFalse(drink.isSuggestSugar());
+        assertTrue(drink.getAvailableExtras().contains("ice"));
+        assertTrue(drink.getAvailableExtras().contains("syrup"));
     }
 
+    @Test
     public void testInitializeMenuFromCSV() {
         String testFileName = "menu.csv";
 
         Menu menu = new Menu(testFileName);
 
-        List<Lunch> lunches = menu.getLunches();
+        List<MainCourse> mainCourses = menu.getMainCourses();
+        List<Dessert> desserts = menu.getDesserts();
         List<Drink> drinks = menu.getDrinks();
 
-        assertMenuItemsMatchExpected(lunches, drinks);
+        assertMenuItemsMatchExpected(mainCourses, desserts, drinks);
     }
 
+    @Test
     public void testInitializeMenuFromCSV_reorderedColumns() {
         String testFileName = "menu_reordered_columns.csv";
 
         Menu menu = new Menu(testFileName);
 
-        List<Lunch> lunches = menu.getLunches();
+        List<MainCourse> mainCourses = menu.getMainCourses();
+        List<Dessert> desserts = menu.getDesserts();
         List<Drink> drinks = menu.getDrinks();
 
-        // Verify lunches
-        assertMenuItemsMatchExpected(lunches, drinks);
+        assertMenuItemsMatchExpected(mainCourses, desserts, drinks);
     }
 }

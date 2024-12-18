@@ -1,35 +1,32 @@
 package com.antypo.grababyte.menu.model.impl;
 
-import com.antypo.grababyte.menu.model.Cuisine;
 import com.antypo.grababyte.menu.model.MenuItem;
 import com.antypo.grababyte.menu.model.MenuItemType;
-
-import java.util.List;
 
 /**
  * Model for menu item of type {@link MenuItemType#LUNCH}.
  */
-public final class Lunch extends MenuItem {
+public class Lunch extends MenuItem {
     /**
-     * Defines the cuisine of the lunch.
+     * Main course which is a part of the lunch.
      */
-    private final Cuisine cuisine;
+    MainCourse mainCourse;
     /**
-     * Represents ingredients of the meal.
+     * Dessert which is a part of the lunch.
      */
-    private final List<String> ingredients;
+    Dessert dessert;
 
-    public Lunch(int menuNumber, String name, Double price, Cuisine cuisine, List<String> ingredients) {
-        super(menuNumber, name, price, MenuItemType.LUNCH);
-        this.cuisine = cuisine;
-        this.ingredients = ingredients;
+    public Lunch(MainCourse mainCourse, Dessert dessert) {
+        super(mainCourse.getName() + " with " + dessert.getName(), mainCourse.getPrice() + dessert.getPrice(), MenuItemType.LUNCH);
+        this.mainCourse = mainCourse;
+        this.dessert = dessert;
     }
 
-    public Cuisine getCuisine() {
-        return cuisine;
+    public Dessert getDessert() {
+        return dessert;
     }
 
-    public List<String> getIngredients() {
-        return ingredients;
+    public MainCourse getMainCourse() {
+        return mainCourse;
     }
 }

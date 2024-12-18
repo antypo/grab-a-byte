@@ -7,11 +7,6 @@ import java.util.Random;
  */
 public abstract class MenuItem {
     /**
-     * Number of the item in the menu.
-     * Allows for customer ordering with number if for any reason they refrain from saying the item's name.
-     */
-    private final int menuNumber;
-    /**
      * Name of the menu item.
      */
     private final String name;
@@ -24,15 +19,10 @@ public abstract class MenuItem {
      */
     private final MenuItemType type;
 
-    public MenuItem(int menuNumber, String name, double price, MenuItemType type) {
-        this.menuNumber = menuNumber;
+    public MenuItem(String name, double price, MenuItemType type) {
         this.name = name;
         this.price = price;
         this.type = type;
-    }
-
-    public int getMenuNumber() {
-        return menuNumber;
     }
 
     public String getName() {
@@ -50,20 +40,20 @@ public abstract class MenuItem {
     private String advertisingMessageForPrice() {
         Random random = new Random();
 
-        // 50% chance to return one of the following messages or an empty string
-        int messageIndex = random.nextInt(5);  // Randomly pick one of 4 possible messages
+        // high chance to return an empty string
+        int messageIndex = random.nextInt(7);  // Randomly pick one of the below possible messages
 
         return switch (messageIndex) {
-            case 0, 1 -> "";
-            case 2 -> "Special offer! ";
-            case 3 -> "Limited time deal! ";
-            case 4 -> "Today just for ";
-            default -> "";  // Just in case, though it won't actually be used
+            case 3 -> "special offer! ";
+            case 4 -> "limited time deal! ";
+            case 5 -> "today just for ";
+            case 6 -> "just for you! ";
+            default -> "";
         };
     }
 
     @Override
     public String toString() {
-        return menuNumber + ". " + name + ", " + advertisingMessageForPrice() + price + "zł";
+        return name + ", " + advertisingMessageForPrice() + String.format("%.2f", price) + "zł";
     }
 }

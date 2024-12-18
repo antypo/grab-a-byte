@@ -4,8 +4,10 @@ package com.antypo.grababyte.menu.model;
  * Defines currently offered types of things possible to order.
  */
 public enum MenuItemType {
-    LUNCH("Lunch"),
-    DRINK("Drink");
+    MAIN_COURSE("MainCourse"),
+    DESSERT("Dessert"),
+    DRINK("Drink"),
+    LUNCH("Lunch");
 
     private final String displayName;
 

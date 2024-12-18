@@ -1,9 +1,12 @@
 package com.antypo.grababyte.menu.model;
 
-import junit.framework.TestCase;
 
-public class CuisineTest extends TestCase {
+import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class CuisineTest {
+    @Test
     public void testGetEnum() {
         Cuisine cuisine1 = Cuisine.getEnum("Mexican");
         Cuisine cuisine2 = Cuisine.getEnum("mexican");
@@ -14,6 +17,7 @@ public class CuisineTest extends TestCase {
         assertEquals(cuisine3.toString(), "Mexican");
     }
 
+    @Test
     public void testToString() {
         Cuisine cuisine = Cuisine.getEnum("poliSh");
 
