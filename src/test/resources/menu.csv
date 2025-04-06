@@ -1,0 +1,5 @@
+type; name; price; suggestIce; suggestLemon; suggestSyrup; suggestSugar; cuisine; ingredients;
+Main course; Christmas Egg;99999.99;;;;;Polish;Hubert;
+Main course;Pierogi;10.0;;;;;Polish;Flour,Water,Mielone;
+Dessert;Sernik;12.00;;;;;Polish;
+Drink;Piwo;7.0;1;0;1;0;;;
